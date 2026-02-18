@@ -5,6 +5,16 @@ import usuarioRoutes from './routes/usuarioRoutes.js'
 // Crea una instancia del contenedor web 
 const app = express();
 const PORT = process.env.PORT ?? 4000;
+
+// Habilitar el Template Engine (PUG)
+app.set("view engine", "pug");
+app.set("views", "./views")
+
+// Definimos la carpeta de los recursos estáticos
+app.use(express.static('public'))
+
+
+app.use("/auth", usuarioRoutes)
 // GET
 app.get("/", (req, res)=>{
     res.json({
