@@ -1,12 +1,11 @@
-//console.log("Hola desde JS");
 import express from 'express'
-import usuarioRoutes from './routes/usuarioRoutes.js'
 
-// Crea una instancia del contenedor web 
-const app = express();
-const PORT = process.env.PORT ?? 4000;
+const router = express.Router();
+
+// Definir los ENDPOINTS
 // GET
-app.get("/", (req, res)=>{
+router.get("/", (req, res)=>{
+    console.log("Se esta procesando una petición del tipo GET")
     res.json({
         status:200, 
         message: "Bienvenido al Sistema de Bienes Raices"
@@ -15,12 +14,12 @@ app.get("/", (req, res)=>{
 
 
 //POST
-app.post("/createUser", (req, res) =>
+router.post("/createUser", (req, res) =>
     {
         console.log("Se esta procesando una petición del tipo POST")
         const nuevoUsuario = {
             nombre:"Blanca Sarahi Melendez Torres",
-            correo:"blanca@gmail.com"
+            correo:"blanca.melendez@gmail.com"
         }
 
         res.json({
@@ -30,7 +29,7 @@ app.post("/createUser", (req, res) =>
     })
     
 //PUT - Actualización Completa
-app.put("/actualizarOferta/",(req, res)=>{
+router.put("/actualizarOferta/",(req, res)=>{
     console.log("Se esta procesando una petición del tipo PUT");
     const mejorOfertaCompra =
     {
@@ -53,12 +52,12 @@ app.put("/actualizarOferta/",(req, res)=>{
 })
 
 //PATCH  - Actualización Parcial
-app.patch("/actualizarPassword/:nuevoPassword", (req, res)=>
+router.patch("/actualizarPassword/:nuevoPassword", (req, res)=>
 {
     console.log("Se esta procesando una petición del tipo PATCH");
     const usuario = {
-        nombre: "Damián Romero",
-        correo: "d.romero@gmail.com", 
+        nombre: "Blanca Sarahi Melendez Torres",
+        correo: "blanca.melendez@gmail.com", 
         password: "123456789"        
     }
 
@@ -69,7 +68,7 @@ app.patch("/actualizarPassword/:nuevoPassword", (req, res)=>
     })
 })
 
-app.delete("/borrarPropiedad/:id", (req, res)=>{
+router.delete("/borrarPropiedad/:id", (req, res)=>{
     console.log("Se esta procesando una petición del tipo DELETE");
     const {id} = req.params;
     res.json({
@@ -78,13 +77,4 @@ app.delete("/borrarPropiedad/:id", (req, res)=>{
     })
 })
 
-
-app.listen(PORT, ()=> {
-    console.log(`El servidor esta iniciado en el puerto ${PORT}`)
-}) 
-
-app.use("/", usuarioRoutes)
-
-app.listen(PORT, ()=> {
-    console.log(`El servidor esta iniciado en el puerto ${PORT}`)
-})
+export default router
