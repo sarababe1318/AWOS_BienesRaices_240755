@@ -12,6 +12,11 @@ router.get("/", (req, res)=>{
     })
 })
 
+router.get("/login", (req, res)=>{
+    
+    res.render("auth/login")
+})
+
 
 //POST
 router.post("/createUser", (req, res) =>
@@ -78,3 +83,4 @@ router.delete("/borrarPropiedad/:id", (req, res)=>{
 })
 
 export default router
+
