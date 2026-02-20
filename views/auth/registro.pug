@@ -1,6 +1,64 @@
 extends ../layout/index 
 
-block contenido
-    div
-        h2.text-center.text-2xl.font-extrabold.text-orange-600 Crea tu cuenta
-    p Por favor ingresa cuidadosamente tus datos:
+block contenido 
+    .py-12.bg-gray-100.min-h-screen
+        h1.text-4xl.my-8.font-extrabold.text-center.text-indigo-600 Bienes 
+            span.font-normal.text-gray-800 Raices 
+        h2.text-center.text-lg.font-normal.text-gray-600 Por favor ingresa cuidadosamente tus datos:
+
+        .mt-10.mx-auto.max-w-xl
+            .bg-white.py-10.px-6.shadow-xl.rounded-2xl 
+                form.space-y-6
+
+                    div
+                        label.block.text-sm.uppercase.text-gray-600.mb-2.font-semibold(for="nombreUsuario") Nombre completo:
+                        input#nombreUsuario(
+                            type="text"
+                            name="usuarioNombre"
+                            placeholder="p.e.: Blanca Sarahi Melendez Torres"
+                            class="w-full border border-gray-300 px-4 py-3 rounded-xl placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 transition-all duration-200"
+                        )
+                    
+                    div
+                        label.block.text-sm.uppercase.text-gray-600.mb-2.font-semibold(for="emailUsuario") Correo electrónico:
+                        input#emailUsuario(
+                            type="email"
+                            name="emailUsuario"
+                            placeholder="p.e.: blanca@email.com"
+                            class="w-full border border-gray-300 px-4 py-3 rounded-xl placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 transition-all duration-200"
+                        )
+
+                    div
+                        label.block.text-sm.uppercase.text-gray-600.mb-2.font-semibold(for="passwordUsuario") Contraseña:
+                        input#passwordUsuario(
+                            type="password"
+                            name="passwordUsuario"
+                            placeholder="Por lo menos 8 caracteres"
+                            class="w-full border border-gray-300 px-4 py-3 rounded-xl placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 transition-all duration-200"
+                        )
+                    
+                    div
+                        label.block.text-sm.uppercase.text-gray-600.mb-2.font-semibold(for="confirmacionUsuario") Confirmación de contraseña:
+                        input#confirmacionUsuario(
+                            type="password"
+                            name="confirmacionUsuario"
+                            placeholder="Repite la contraseña anterior"
+                            class="w-full border border-gray-300 px-4 py-3 rounded-xl placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 transition-all duration-200"
+                        )
+
+                    input(
+                        class="w-full bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white font-bold py-3 cursor-pointer rounded-xl shadow-lg uppercase transition-all duration-300"
+                        type="submit"
+                        value="Registrar Usuario"
+                    )
+
+                    div.flex.items-center.justify-between.pt-4 
+                        a(
+                            class="text-gray-500 text-sm hover:text-indigo-600 hover:underline transition"
+                            href="/auth/login"
+                        ) ¿Ya tienes cuenta? Inicia Sesión 
+                        
+                        a(
+                            class="text-gray-500 text-sm hover:text-indigo-600 hover:underline transition"
+                            href="/auth/recuperarPassword"
+                        ) ¿Olvidaste tu contraseña? Recupérala

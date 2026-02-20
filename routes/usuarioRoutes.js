@@ -1,34 +1,31 @@
 import express from 'express'
 
-import {formularioLogin, formularioRegistro} from '../controllers/usuarioController.js'
+import { 
+  formularioLogin, 
+  formularioRegistro,
+  formularioRecuperacion
+} from '../controllers/usuarioController.js'
 
-const router = express.Router();
+const router = express.Router()
 
-// Definir los ENDPOINTS
 // GET
-// GET
-router.get("/login", (req, res)=>{
-    
-    res.render("auth/login")
-})
 router.get("/login", formularioLogin)
 router.get("/registro", formularioRegistro)
+router.get("/recuperarPassword", formularioRecuperacion)
 
+// POST
+router.post("/createUser", (req, res) => {
+    console.log("Se esta procesando una petición del tipo POST")
+    const nuevoUsuario = {
+        nombre:"Blanca Sarahi Melendez Torres",
+        correo:"blanca.melendez@gmail.com"
+    }
 
-//POST
-router.post("/createUser", (req, res) =>
-    {
-        console.log("Se esta procesando una petición del tipo POST")
-        const nuevoUsuario = {
-            nombre:"Blanca Sarahi Melendez Torres",
-            correo:"blanca.melendez@gmail.com"
-        }
-
-        res.json({
-            status:200, 
-            message: `Se ha solicitado la creación de un nuevo usuario con nombre: ${nuevoUsuario.nombre} y correo: ${nuevoUsuario.correo}`
-        })
+    res.json({
+        status:200, 
+        message: `Se ha solicitado la creación de un nuevo usuario con nombre: ${nuevoUsuario.nombre} y correo: ${nuevoUsuario.correo}`
     })
+})
     
 //PUT - Actualización Completa
 router.put("/actualizarOferta/",(req, res)=>{
