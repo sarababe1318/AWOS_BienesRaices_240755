@@ -1,7 +1,7 @@
 //console.log("Hola desde JS");
 import express from 'express'
 import usuarioRoutes from './routes/usuarioRoutes.js'
-
+import { connectDB } from './config/db.js'
 // Crea una instancia del contenedor web 
 const app = express();
 const PORT = process.env.PORT ?? 4000;
@@ -12,7 +12,7 @@ app.set("views", "./views")
 
 // Definimos la carpeta de los recursos estáticos
 app.use(express.static('public'))
-
+await connectDB();
 
 app.use("/auth", usuarioRoutes)
 // GET
