@@ -3,10 +3,11 @@ import express from 'express'
 import { 
   formularioLogin, 
   formularioRegistro,
+  registrarUsuario,
   formularioRecuperacion
 } from '../controllers/usuarioController.js'
 
-const router = express.Router()
+const router = express.Router();
 
 // GET
 router.get("/login", formularioLogin)
@@ -14,6 +15,7 @@ router.get("/registro", formularioRegistro)
 router.get("/recuperarPassword", formularioRecuperacion)
 
 // POST
+router.post("/registro", registrarUsuario)
 router.post("/createUser", (req, res) => {
     console.log("Se esta procesando una petición del tipo POST")
     const nuevoUsuario = {

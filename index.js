@@ -12,6 +12,9 @@ app.set("views", "./views")
 
 // Definimos la carpeta de los recursos estáticos
 app.use(express.static('public'))
+app.use(express.urlencoded({extended: true}))
+
+
 await connectDB();
 
 app.use("/auth", usuarioRoutes)
