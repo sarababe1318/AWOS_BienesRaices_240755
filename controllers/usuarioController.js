@@ -1,5 +1,5 @@
 import {check, validationResult } from 'express-validator'
-import Usuario from '../models/Usuario.js'
+import Usuario from '../models/usuario.js'
 import {generarToken} from '../lib/tokens.js'
 import {emailRegistro} from '../lib/emails.js'
 
